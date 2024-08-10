@@ -1,0 +1,517 @@
+{
+	"info": {
+		"_postman_id": "da7f6aca-efd6-4026-8661-63f5c173bc2f",
+		"name": "TestAPI_DigitalSkola",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31552630",
+		"_collection_link": "https://www.postman.com/aerospace-geoscientist-44583868/workspace/digitalskolabootcamp-batch5/collection/31552630-da7f6aca-efd6-4026-8661-63f5c173bc2f?action=share&source=collection_link&creator=31552630"
+	},
+	"item": [
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('this is must be return status code is 200', function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('this is must be validate id with integer 4 as a number of id', function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test('this is must be return token QpwL5tke4Pnpja7X4', function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.token).to.eql(\"QpwL5tke4Pnpja7X4\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"pistol\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('This hit api login, must be return response code 200/OK', function() {\r",
+									"    pm.expect(pm.response.code).to.eql(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('This hit api login, must be return a token', function() {\r",
+									"    let returnToken = pm.response.json();\r",
+									"    pm.expect(returnToken.token).to.eql('QpwL5tke4Pnpja7X4');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "listUsers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('This must be return status code of 200', function () {\r",
+									"     pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"const definedSchema = \r",
+									"{\r",
+									"  \"properties\": {\r",
+									"    \"page\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"per_page\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"total\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"total_pages\": {\r",
+									"      \"type\": \"integer\"\r",
+									"    },\r",
+									"    \"data\": {\r",
+									"      \"type\": \"array\",\r",
+									"      \"items\": [\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        },\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        },\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        },\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        },\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        },\r",
+									"        {\r",
+									"          \"type\": \"object\",\r",
+									"          \"properties\": {\r",
+									"            \"id\": {\r",
+									"              \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"email\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"first_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"last_name\": {\r",
+									"              \"type\": \"string\"\r",
+									"            },\r",
+									"            \"avatar\": {\r",
+									"              \"type\": \"string\"\r",
+									"            }\r",
+									"          },\r",
+									"          \"required\": [\r",
+									"            \"id\",\r",
+									"            \"email\",\r",
+									"            \"first_name\",\r",
+									"            \"last_name\",\r",
+									"            \"avatar\"\r",
+									"          ]\r",
+									"        }\r",
+									"      ]\r",
+									"    },\r",
+									"    \"support\": {\r",
+									"      \"type\": \"object\",\r",
+									"      \"properties\": {\r",
+									"        \"url\": {\r",
+									"          \"type\": \"string\"\r",
+									"        },\r",
+									"        \"text\": {\r",
+									"          \"type\": \"string\"\r",
+									"        }\r",
+									"      },\r",
+									"      \"required\": [\r",
+									"        \"url\",\r",
+									"        \"text\"\r",
+									"      ]\r",
+									"    }\r",
+									"  },\r",
+									"  \"required\": [\r",
+									"    \"page\",\r",
+									"    \"per_page\",\r",
+									"    \"total\",\r",
+									"    \"total_pages\",\r",
+									"    \"data\",\r",
+									"    \"support\"\r",
+									"  ]\r",
+									"};\r",
+									"\r",
+									"pm.test('This assertion must be validate defined jsonScehma', function() {\r",
+									"    pm.response.to.have.jsonSchema(definedSchema);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users?page=2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "singleUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('This hit API must be return email as janet.weaver@reqres.in', function() {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.data.email).to.eql('janet.weaver@reqres.in');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has correct data\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(jsonData.data.id).to.eql(2);\r",
+									"    pm.expect(jsonData.data.email).to.eql(\"janet.weaver@reqres.in\");\r",
+									"    pm.expect(jsonData.data.first_name).to.eql(\"Janet\");\r",
+									"    pm.expect(jsonData.data.last_name).to.eql(\"Weaver\");\r",
+									"    pm.expect(jsonData.data.avatar).to.eql(\"https://reqres.in/img/faces/2-image.jpg\");\r",
+									"\r",
+									"    pm.expect(jsonData.support.url).to.eql(\"https://reqres.in/#support-heading\");\r",
+									"    pm.expect(jsonData.support.text).to.eql(\"To keep ReqRes free, contributions towards server costs are appreciated!\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteExistingUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('This hit api must be return response code 204', function() {\r",
+									"    pm.expect(pm.response.code).to.eql(204);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/users/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "updateDataUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('This unit test API must return correct update data', function() {\r",
+									"    let correctData = pm.response.json();\r",
+									"    pm.expect(correctData.name).to.eql('Reza Paramarta');\r",
+									"    pm.expect(correctData.job).to.eql('Software Test Engineer');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Reza Paramarta\",\r\n    \"job\": \"Software Test Engineer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/users/2",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,238 @@
+{
+	"id": "e132e6c6-bf4e-4a93-9050-e3b4b13de2cb",
+	"name": "TestAPI_DigitalSkola",
+	"timestamp": "2024-08-10T15:06:04.840Z",
+	"collection_id": "31552630-da7f6aca-efd6-4026-8661-63f5c173bc2f",
+	"folder_id": 0,
+	"environment_id": "31552630-78534af8-5a18-4882-8673-bd949268b744",
+	"totalPass": 11,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-08-10T15:06:01.423Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "644a6509-f4c4-4d95-9721-b002e10b54b4",
+			"name": "Register",
+			"url": "https://reqres.in/api/register",
+			"time": 578,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"this is must be return status code is 200": true,
+				"this is must be validate id with integer 4 as a number of id": true,
+				"this is must be return token QpwL5tke4Pnpja7X4": true
+			},
+			"testPassFailCounts": {
+				"this is must be return status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"this is must be validate id with integer 4 as a number of id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"this is must be return token QpwL5tke4Pnpja7X4": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				578
+			],
+			"allTests": [
+				{
+					"this is must be return status code is 200": true,
+					"this is must be validate id with integer 4 as a number of id": true,
+					"this is must be return token QpwL5tke4Pnpja7X4": true
+				}
+			]
+		},
+		{
+			"id": "df83e327-e019-414b-b100-d19194fa1bc1",
+			"name": "login",
+			"url": "https://reqres.in/api/login",
+			"time": 411,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"This hit api login, must be return response code 200/OK": true,
+				"This hit api login, must be return a token": true
+			},
+			"testPassFailCounts": {
+				"This hit api login, must be return response code 200/OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"This hit api login, must be return a token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				411
+			],
+			"allTests": [
+				{
+					"This hit api login, must be return response code 200/OK": true,
+					"This hit api login, must be return a token": true
+				}
+			]
+		},
+		{
+			"id": "c152b655-1621-43af-bd36-c79a56e59caa",
+			"name": "listUsers",
+			"url": "https://reqres.in/api/users?page=2",
+			"time": 82,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"This must be return status code of 200": true,
+				"This assertion must be validate defined jsonScehma": true
+			},
+			"testPassFailCounts": {
+				"This must be return status code of 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"This assertion must be validate defined jsonScehma": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				82
+			],
+			"allTests": [
+				{
+					"This must be return status code of 200": true,
+					"This assertion must be validate defined jsonScehma": true
+				}
+			]
+		},
+		{
+			"id": "bbf90858-8ac3-42f6-97c6-58789c362896",
+			"name": "singleUser",
+			"url": "https://reqres.in/api/users/2",
+			"time": 63,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"This hit API must be return email as janet.weaver@reqres.in": true,
+				"Response has correct data": true
+			},
+			"testPassFailCounts": {
+				"This hit API must be return email as janet.weaver@reqres.in": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has correct data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				63
+			],
+			"allTests": [
+				{
+					"This hit API must be return email as janet.weaver@reqres.in": true,
+					"Response has correct data": true
+				}
+			]
+		},
+		{
+			"id": "0b0a751a-59ed-4217-b1da-a1db3a6993fd",
+			"name": "deleteExistingUser",
+			"url": "https://reqres.in/api/users/2",
+			"time": 392,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"This hit api must be return response code 204": true
+			},
+			"testPassFailCounts": {
+				"This hit api must be return response code 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				392
+			],
+			"allTests": [
+				{
+					"This hit api must be return response code 204": true
+				}
+			]
+		},
+		{
+			"id": "67e8bdc4-fa5b-4b06-9d8d-03cf01469f7a",
+			"name": "updateDataUser",
+			"url": "https://reqres.in/api/users/2",
+			"time": 494,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"This unit test API must return correct update data": true
+			},
+			"testPassFailCounts": {
+				"This unit test API must return correct update data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				494
+			],
+			"allTests": [
+				{
+					"This unit test API must return correct update data": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 2020,
+	"collection": {
+		"requests": [
+			{
+				"id": "644a6509-f4c4-4d95-9721-b002e10b54b4",
+				"method": "POST"
+			},
+			{
+				"id": "df83e327-e019-414b-b100-d19194fa1bc1",
+				"method": "POST"
+			},
+			{
+				"id": "c152b655-1621-43af-bd36-c79a56e59caa",
+				"method": "GET"
+			},
+			{
+				"id": "bbf90858-8ac3-42f6-97c6-58789c362896",
+				"method": "GET"
+			},
+			{
+				"id": "0b0a751a-59ed-4217-b1da-a1db3a6993fd",
+				"method": "DELETE"
+			},
+			{
+				"id": "67e8bdc4-fa5b-4b06-9d8d-03cf01469f7a",
+				"method": "PUT"
+			}
+		]
+	}
+}
